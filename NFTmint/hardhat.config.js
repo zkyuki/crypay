@@ -6,7 +6,7 @@ require("@nomicfoundation/hardhat-toolbox");
 //Note: keep your mnemonic and private keys securely
 //Read more: https://hardhat.org/hardhat-runner/docs/config#hd-wallet-config
 //1) You can configure private keys or mnemonic:
-let accounts = ["ec149b19e7275b86c53d5534d348251f454ff4aba98a9212a3edda5dd5123201"]
+let accounts = [""]
 // let accounts = { mnemonic: "your mnemonic here", }
 
 /** @type import('hardhat/config').HardhatUserConfig */
