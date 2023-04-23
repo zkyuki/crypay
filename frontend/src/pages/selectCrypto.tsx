@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Box,
     Button,
@@ -11,18 +11,41 @@ import {
     SimpleGrid,
     VStack,
     useToast,
+    Tooltip,
+    Image,
 } from "@chakra-ui/react";
-import { Image } from "@chakra-ui/react";
+import { CheckIcon } from "@chakra-ui/icons";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useSigner } from "wagmi";
+import { useSigner, useAccount } from "wagmi";
 import { ethers } from "ethers";
 
 const SelectCryptoPage: React.FC = () => {
     const { data: signer } = useSigner();
+    const { address } = useAccount();
     const toast = useToast();
 
     const [chain, setChain] = React.useState("");
     const [token, setToken] = React.useState("");
+    const [amount, setAmount] = React.useState("");
+    const [freeFlag, setFreeFlag] = React.useState(false);
+    const [authorized, setAuthorized] = React.useState(false);
+
+    useEffect(() => {
+        if (address) {
+            setAuthorized(true);
+        } else {
+            setAuthorized(false);
+        }
+        if (chain == "GnosisChain" && token == "xDAI") {
+            setAmount("4.9 xDAI");
+            if (authorized) {
+                setFreeFlag(true);
+            }
+        } else {
+            setAmount("");
+            setFreeFlag(false);
+        }
+    }, [chain, token, address, authorized]);
 
     const sendTransaction = async () => {
         // TODO: send transaction
@@ -49,11 +72,17 @@ const SelectCryptoPage: React.FC = () => {
             } catch (error) {
                 console.error("Error sending transaction:", error);
                 toast({
-                    title: `Transaction sent.`,
+                    title: `Error occurred.`,
                     status: "error",
                     isClosable: true,
                 });
             }
+        } else {
+            toast({
+                title: `Please Connect Wallet.`,
+                status: "error",
+                isClosable: true,
+            });
         }
     };
 
@@ -74,7 +103,23 @@ const SelectCryptoPage: React.FC = () => {
                     w="120px"
                 />
                 <Spacer />
-                <ConnectButton />
+                <Flex>
+                    <VStack textAlign="center" margin="12px">
+                        {authorized && (
+                            <Tooltip
+                                label="This user is authorized"
+                                aria-label="A tooltip"
+                            >
+                                <Image
+                                    src="assets/check.png"
+                                    alt="authorized icon"
+                                    w="20px"
+                                />
+                            </Tooltip>
+                        )}
+                    </VStack>
+                    <ConnectButton />
+                </Flex>
             </Flex>
             <Container maxW="2xl">
                 <Box
@@ -131,7 +176,13 @@ const SelectCryptoPage: React.FC = () => {
                                     onChange={(e) =>
                                         console.log(e.target.value)
                                     } // auto complete
+                                    value={amount}
                                 />
+                                {freeFlag && (
+                                    <Text marginTop={2} color="green.400">
+                                        Free Gas by data unveiling
+                                    </Text>
+                                )}
                             </Box>
                         </VStack>
                     </SimpleGrid>
@@ -142,6 +193,11 @@ const SelectCryptoPage: React.FC = () => {
                             onClick={() => {
                                 sendTransaction();
                             }}
+                            isDisabled={
+                                chain && token && amount && address
+                                    ? false
+                                    : true
+                            }
                         >
                             Send
                         </Button>

@@ -39,9 +39,10 @@ const SelectPaymentPage: React.FC = () => {
                             <Image
                                 justifyContent="center"
                                 alignItems="center"
-                                src="https://placehold.co/600x400"
+                                src="https://www.timescar-rental.com/images/japan/stop_ph007.png?20190507"
                                 alt="ETH Parking"
-                                fallbackSrc="https://placehold.co/600x400"
+                                w={600}
+                                h={400}
                             />
                         </Center>
                         <Box marginTop={5}>
@@ -58,12 +59,12 @@ const SelectPaymentPage: React.FC = () => {
                             </Text>
                             <Divider />
                             <Flex paddingX={5} paddingY={3}>
-                                <Text>入場時間</Text>
+                                <Text>进场时间</Text>
                                 <Spacer />
                                 <Text>2021/09/01 12:00</Text>
                             </Flex>
                             <Flex paddingX={5} paddingY={3}>
-                                <Text>退場時間</Text>
+                                <Text>退场时间</Text>
                                 <Spacer />
                                 <Text>2021/09/01 18:00</Text>
                             </Flex>
@@ -82,51 +83,48 @@ const SelectPaymentPage: React.FC = () => {
                             <VStack spacing={5}>
                                 <Box width="100%">
                                     <Heading size="md" textAlign="left">
-                                        Choose a payment method
+                                        选择付款方式
                                     </Heading>
                                 </Box>
                                 <Grid templateColumns="repeat(3, 1fr)" gap={6}>
                                     <Center>
-                                        <Link href="#">
-                                            <Button bg={"white"}>
+                                        <Button bg={"white"}>
+                                            <Link href="#">
                                                 <Image
                                                     justifyContent="center"
                                                     alignItems="center"
                                                     src="assets/visa_logo.png"
                                                     alt="Visa"
                                                     h={30}
-                                                    fallbackSrc="https://via.placeholder.com/150"
                                                 />
-                                            </Button>
-                                        </Link>
+                                            </Link>
+                                        </Button>
                                     </Center>
                                     <Center>
-                                        <Link href="#">
-                                            <Button bg={"white"}>
+                                        <Button bg={"white"}>
+                                            <Link href="#">
                                                 <Image
                                                     justifyContent="center"
                                                     alignItems="center"
                                                     src="assets/paypal_logo.png"
                                                     alt="PayPal"
                                                     h={30}
-                                                    fallbackSrc="https://via.placeholder.com/150"
                                                 />
-                                            </Button>
-                                        </Link>
+                                            </Link>
+                                        </Button>
                                     </Center>
                                     <Center>
-                                        <Link href="/selectCrypto">
-                                            <Button as="a" bg={"white"}>
+                                        <Button bg={"white"}>
+                                            <Link href="/selectCrypto">
                                                 <Image
                                                     justifyContent="center"
                                                     alignItems="center"
                                                     src="assets/crypay_logo.png"
                                                     alt="Crypto"
                                                     h={30}
-                                                    fallbackSrc="https://via.placeholder.com/150"
                                                 />
-                                            </Button>
-                                        </Link>
+                                            </Link>
+                                        </Button>
                                     </Center>
                                 </Grid>
                             </VStack>
