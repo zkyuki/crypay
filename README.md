@@ -21,6 +21,7 @@ A decentralised gasless payment protocol empowered by on-chain data control. Use
 ・Insurance company improve their service by useful unveiled data
 
 
-# Slide
+# Demo and Slide
+https://www.youtube.com/watch?embeds_referring_euri=https%3A%2F%2Ftaikai.network%2F&embeds_referring_origin=https%3A%2F%2Ftaikai.network&source_ve_path=Mjg2NjQsMTY0NTAz&feature=emb_share&v=B96bYryFPk4
 https://www.canva.com/design/DAFg0MJ3o1k/c82DLHvwxhslIZt9Ex9hbg/edit
 
